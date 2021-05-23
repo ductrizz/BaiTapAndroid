@@ -29,10 +29,8 @@
         android:text="2"
         android:textColor="@android:color/black"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@id/text3"
-        app:layout_constraintStart_toEndOf="@id/text1"
-        app:layout_constraintEnd_toStartOf="@id/text3"
-        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHeight_percent="0.142857"
         app:layout_constraintWidth_percent="0.25" />
 
@@ -45,6 +43,8 @@
         android:text="3"
         android:textColor="@android:color/black"
         android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.142857"
         app:layout_constraintWidth_percent="0.25" />
 
@@ -58,9 +58,8 @@
         android:textColor="@android:color/black"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHeight_percent="0.142857"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.25" />
 
     <TextView
@@ -72,9 +71,13 @@
         android:text="5"
         android:textColor="@android:color/black"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@id/text6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintHeight_percent="0.142857"
-        app:layout_constraintStart_toEndOf="@id/text6"
         app:layout_constraintWidth_percent="0.25" />
 
     <TextView
@@ -87,10 +90,12 @@
         android:textColor="@android:color/black"
         android:textSize="50sp"
         app:layout_constraintHeight_percent="0.142857"
-        app:layout_constraintBottom_toTopOf="@id/text7"
-        app:layout_constraintStart_toEndOf="@id/text7"
-        app:layout_constraintEnd_toStartOf="@id/text5"
-        app:layout_constraintTop_toBottomOf="@id/text5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.70"
         app:layout_constraintWidth_percent="0.25" />
 
     <TextView
@@ -102,9 +107,10 @@
         android:text="7"
         android:textColor="@android:color/black"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/text5"
+        app:layout_constraintTop_toBottomOf="@id/text5"
+        app:layout_constraintBottom_toTopOf="@id/text4"
         app:layout_constraintHeight_percent="0.142857"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintWidth_percent="0.25" />
 
     <TextView
@@ -117,19 +123,12 @@
         android:text="8"
         android:textColor="@android:color/black"
         android:textSize="50sp"
+        app:layout_constraintStart_toStartOf="@id/text6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text7"
+        app:layout_constraintBottom_toTopOf="@id/text3"
         app:layout_constraintHeight_percent="0.142857"
         app:layout_constraintWidth_percent="0.25" />
 
-    <androidx.constraintlayout.helper.widget.Flow
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:foregroundGravity="center"
-        android:orientation="vertical"
-        app:constraint_referenced_ids="text3,text8,text5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/text4"
-        app:layout_constraintHeight_percent="0.42857"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.25" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

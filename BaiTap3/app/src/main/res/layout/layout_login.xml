@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:outlineSpotShadowColor="@color/black"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="Phone"
+        android:textColor="@color/black"
+        android:textFontWeight="@integer/config_navAnimTime"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image1"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/Edtxt1"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="@color/grey_light"
+        android:hint="UserName"
+        android:textEditPasteWindowLayout="@string/app_name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/text1"
+        app:layout_constraintTop_toBottomOf="@id/text1"
+        app:layout_constraintWidth_percent="0.85" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="Passwork"
+        android:textColor="@color/black"
+        android:textFontWeight="@integer/config_navAnimTime"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/Edtxt1"
+        app:layout_constraintTop_toBottomOf="@id/Edtxt1" />
+
+    <EditText
+        android:id="@+id/Edtxt2"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:background="@color/grey_light"
+        android:hint="Passoword"
+        android:textEditPasteWindowLayout="@string/app_name"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/text2"
+        app:layout_constraintTop_toBottomOf="@id/text2"
+        app:layout_constraintWidth_percent="0.85" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="LOGIN"
+        android:textColor="@color/black"
+        android:textFontWeight="@android:integer/config_longAnimTime"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@id/Edtxt2"
+        app:layout_constraintTop_toBottomOf="@id/Edtxt2"
+        app:layout_constraintWidth_percent="0.85"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
