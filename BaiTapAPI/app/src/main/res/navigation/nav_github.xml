@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_github"
+    app:startDestination="@id/FragmentUser">
+
+    <fragment
+        android:id="@+id/FragmentUser"
+        android:name="com.trild.baitapapi.Fragment.FragmentUser"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_user">
+
+        <action
+            android:id="@+id/action_FragmentUser_to_FragmentFollower"
+            app:destination="@id/FragmentFollower" />
+        <action
+            android:id="@+id/action_FragmentUser_to_FragmentFollowing"
+            app:destination="@+id/FragmentFollowing"/>
+    </fragment>
+    <fragment
+        android:id="@+id/FragmentFollower"
+        android:name="com.trild.baitapapi.Fragment.FragmentFollower"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_follower">
+
+        <action
+            android:id="@+id/action_FragmentFollower_to_FragmentUser"
+            app:destination="@id/FragmentUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/FragmentFollowing"
+        android:name="com.trild.baitapapi.Fragment.FragmentFollowing"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_following">
+
+        <action
+            android:id="@+id/action_FragmentFollowing_to_FragmentUser"
+            app:destination="@id/FragmentUser" />
+    </fragment>
+</navigation>
