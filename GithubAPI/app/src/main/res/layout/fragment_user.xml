@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/imgUser"
@@ -53,6 +52,5 @@
         android:text="@string/Following"
         app:layout_constraintStart_toStartOf="@+id/btnFollower"
         app:layout_constraintTop_toBottomOf="@+id/btnFollower" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
