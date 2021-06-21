@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstFragment">
+
+    <ImageView
+        android:id="@+id/imgUser"
+        android:layout_width="@dimen/dim_100dp"
+        android:layout_height="@dimen/dim_100dp"
+        android:background="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dim_10dp"
+        android:text="@string/user_fragment_label"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_20sp"
+        app:layout_constraintBottom_toBottomOf="@id/imgUser"
+        app:layout_constraintStart_toEndOf="@id/imgUser"
+        app:layout_constraintTop_toTopOf="@id/imgUser" />
+
+    <Button
+        android:id="@+id/btnFollower"
+        android:layout_width="@dimen/dim_125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_20dp"
+        android:text="@string/Follower"
+        android:backgroundTint="@color/orrange"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@+id/imgUser"
+        app:layout_constraintTop_toBottomOf="@+id/imgUser" />
+
+    <Button
+        android:id="@+id/btnFollowing"
+        android:layout_width="@dimen/dim_125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_5dp"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/orrange"
+        android:text="@string/Following"
+        app:layout_constraintStart_toStartOf="@+id/btnFollower"
+        app:layout_constraintTop_toBottomOf="@+id/btnFollower" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

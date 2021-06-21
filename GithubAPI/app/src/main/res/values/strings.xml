@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ApiGithubTri</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="user_fragment_label">User Fragment</string>
+    <string name="follower_fragment_label">Follower Fragment</string>
+    <string name="Follower">Follower</string>
+    <string name="Following">Following</string>
+    <string name="BackUser">Come Back User</string>
+
+    <string name="User_fragment">Hello User fragment</string>
+    <string name="hello_second_fragment">Comback</string>
+</resources>
