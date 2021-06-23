@@ -1,4 +1,4 @@
 package com.trild.baitapapi.Fragment
 
-class FragmentUser {
+class AdapterFollower {
 }
