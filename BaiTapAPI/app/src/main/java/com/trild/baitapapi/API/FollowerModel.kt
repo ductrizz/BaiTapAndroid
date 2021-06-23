@@ -1,3 +1,3 @@
-package com.trild.baitapapi.Model
+package com.trild.baitapapi.API
 
 class FollowerModel : ArrayList<FollowerModelItem>()

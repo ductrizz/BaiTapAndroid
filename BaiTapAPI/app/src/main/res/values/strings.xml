@@ -6,13 +6,15 @@
     <string name="following_user">Following User</string>
     <string name="follower_user">Follower User</string>
     <string name="follower_fragment_label">Follower Fragment</string>
-    <string name="Follower">Follower</string>
-    <string name="Following">Following</string>
+    <string name="Follower">User Follower</string>
+    <string name="idFollower">ID Follower</string>
+    <string name="Following">User Following</string>
+    <string name="idFollowing">ID Following</string>
     <string name="BackUser">Come Back User</string>
 
     <string name="User_fragment">Hello User fragment</string>
     <string name="hello_second_fragment">Comback</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_api">ApiActivity</string>
     <!-- Strings used for fragments for navigation -->

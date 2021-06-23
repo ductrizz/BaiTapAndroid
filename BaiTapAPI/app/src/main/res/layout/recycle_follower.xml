@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/imgFollower"
+        android:layout_width="@dimen/dim_80dp"
+        android:layout_height="@dimen/dim_80dp"
+        android:background="@mipmap/ic_launcher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtUserFollower"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_40dp"
+        android:layout_marginLeft="@dimen/dim_5dp"
+        android:gravity="center_vertical"
+        android:text="@string/Follower"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imgFollower"
+        app:layout_constraintTop_toTopOf="@+id/imgFollower" />
+
+    <TextView
+        android:id="@+id/txtIDFollower"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_40dp"
+        android:layout_marginLeft="@dimen/dim_5dp"
+        android:gravity="center_vertical"
+        android:text="@string/idFollower"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFollower"
+        app:layout_constraintStart_toEndOf="@+id/imgFollower"
+        app:layout_constraintTop_toBottomOf="@+id/txtUserFollower" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

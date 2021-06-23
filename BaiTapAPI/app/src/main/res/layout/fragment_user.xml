@@ -24,12 +24,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dim_10dp"
-        android:text="@string/user_name"
         android:textColor="@color/black"
         android:textSize="@dimen/dim_20sp"
+        android:text="@string/user_name"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/imgUser"
         app:layout_constraintStart_toEndOf="@id/imgUser"
-        app:layout_constraintTop_toTopOf="@id/imgUser" />
+        app:layout_constraintTop_toTopOf="@id/imgUser"
+        tools:text = "@string/user_name"/>
 
     <Button
         android:id="@+id/btnFollower"

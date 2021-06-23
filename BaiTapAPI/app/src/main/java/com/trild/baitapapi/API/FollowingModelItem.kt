@@ -1,4 +1,4 @@
-package com.trild.baitapapi.Model
+package com.trild.baitapapi.API
 
 data class FollowingModelItem(
     val avatar_url: String?, // https://avatars.githubusercontent.com/u/5754972?v=4

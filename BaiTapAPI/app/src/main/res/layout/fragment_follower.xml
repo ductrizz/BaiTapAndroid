@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.FragmentFollower">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleFollower"
+        android:layout_width="match_parent"
+        android:layout_weight="5"
+        android:layout_marginTop="@dimen/dim_40dp"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/test_follower"
+        tools:itemCount="5"
+        android:padding="@dimen/dim_10dp"
+        />
+
     <Button
         android:id="@+id/btnBackUser"
         android:layout_width="@dimen/dim_100dp"
@@ -15,28 +28,4 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
-    <ImageView
-        android:id="@+id/imgFollower"
-        android:layout_width="@dimen/dim_100dp"
-        android:layout_height="@dimen/dim_100dp"
-        android:background="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBackUser"
-        app:layout_constraintVertical_bias="0.025" />
-
-    <TextView
-        android:id="@+id/txtUserFollower"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dim_10dp"
-        android:layout_marginTop="@dimen/dim_5dp"
-        android:text="@string/Follower"
-        android:textColor="@color/black"
-        android:textSize="@dimen/dim_20sp"
-        app:layout_constraintEnd_toEndOf="@id/imgFollower"
-        app:layout_constraintStart_toStartOf="@id/imgFollower"
-        app:layout_constraintTop_toBottomOf="@id/imgFollower" />
 </androidx.constraintlayout.widget.ConstraintLayout>
