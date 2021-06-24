@@ -8,14 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.trild.baitapapi.API.FollowerModel
+import com.trild.baitapapi.API.UserFollower
 import com.trild.baitapapi.R
 
-/*
-class AdapterFollower(private val context: Context, private val list: FollowerModel) : RecyclerView.Adapter<AdapterFollower.ViewHolder>() {
+class AdapterFollower(private val context: Context, private val list: List<UserFollower>) : RecyclerView.Adapter<AdapterFollower.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.activity_main, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recycle_follower, parent, false)
         return ViewHolder(view)
     }
 
@@ -35,4 +34,4 @@ class AdapterFollower(private val context: Context, private val list: FollowerMo
         val textIDFollower = view.findViewById<TextView>(R.id.txtIDFollower)
         val imageFollower = view.findViewById<ImageView>(R.id.imgFollower)
     }
-}*/
+}

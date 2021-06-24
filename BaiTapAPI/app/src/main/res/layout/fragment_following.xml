@@ -7,36 +7,38 @@
     tools:context=".Fragment.FragmentFollowing">
 
     <Button
-        android:id="@+id/btnBackUser"
+        android:id="@+id/btnBackUserflowing"
         android:layout_width="@dimen/dim_100dp"
         android:layout_height="@dimen/dim_40dp"
         android:text="USER"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
-
-    <ImageView
-        android:id="@+id/imgFollowing"
-        android:layout_width="@dimen/dim_100dp"
-        android:layout_height="@dimen/dim_100dp"
-        android:background="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnBackUser"
-        app:layout_constraintVertical_bias="0.025" />
-
     <TextView
-        android:id="@+id/txtUserFollowing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dim_10dp"
-        android:layout_marginTop="@dimen/dim_5dp"
+        android:id="@+id/txtFollowing"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_40dp"
         android:text="@string/Following"
+        android:textStyle="bold"
+        android:textSize="@dimen/dim_25sp"
         android:textColor="@color/black"
-        android:textSize="@dimen/dim_20sp"
-        app:layout_constraintEnd_toEndOf="@id/imgFollowing"
-        app:layout_constraintStart_toStartOf="@id/imgFollowing"
-        app:layout_constraintTop_toBottomOf="@id/imgFollowing" />
+        android:gravity="center"
+        android:background="@color/yellow_light"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleFollowing"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dim_40dp"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/recycle_following"
+        tools:itemCount="9"
+        app:spanCount="5"
+        android:paddingVertical="@dimen/dim_5dp"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

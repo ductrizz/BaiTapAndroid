@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/dim_10dp"
-    tools:context=".GitHubActivity">
+    tools:context=".GitHubActivity"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleViewMain"

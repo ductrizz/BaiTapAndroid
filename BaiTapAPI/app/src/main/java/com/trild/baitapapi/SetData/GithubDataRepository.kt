@@ -1,9 +1,7 @@
 package com.trild.baitapapi.SetData
 
 import android.util.Log
-import com.trild.baitapapi.API.FollowerModel
-import com.trild.baitapapi.API.FollowingModel
-import com.trild.baitapapi.API.UserModel
+import com.trild.baitapapi.API.*
 import com.trild.baitapapi.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -35,15 +33,15 @@ class GithubDataRepository : GitHubRepository{
     }
 
 
-    override suspend fun getUserDetailfroAPI(userName: String): UserModel? {
-        return gitHubService?.getUserDetail(userName = userName)
+    override suspend fun getUserDetailfroAPI(userName: String): UserModel {
+        return gitHubService?.getUserDetail(userName = userName)!!
     }
 
-    override suspend fun getListFollowerfroAPI(userName: String): FollowerModel? {
-        return gitHubService?.getListFollower(userName = userName)
+    override suspend fun getListFollowerfroAPI(userName: String): List<UserFollower>? {
+        return gitHubService?.getListFollower(userName = userName, perpage = 100, page = 1)
     }
 
-    override suspend fun getListFollowingfroAPI(userName: String): FollowingModel? {
-        return gitHubService?.getListFollowing(userName = userName)
+    override suspend fun getListFollowingfroAPI(userName: String): List<UserFollowing>? {
+        return gitHubService?.getListFollowing(userName = userName, perpage = 100 , page = 1)
     }
 }

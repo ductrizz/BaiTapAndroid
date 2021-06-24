@@ -1,11 +1,9 @@
 package com.trild.baitapapi.SetData
 
-import com.trild.baitapapi.API.FollowerModel
-import com.trild.baitapapi.API.FollowingModel
-import com.trild.baitapapi.API.UserModel
-import retrofit2.Call
+import com.trild.baitapapi.API.*
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface GitHubService {
@@ -16,9 +14,17 @@ interface GitHubService {
 
     //setInterfacce-Follower
      @GET("/users/{userName}/followers")
-     suspend fun getListFollower(@Path("userName") userName : String?): FollowerModel?
+     suspend fun getListFollower(
+        @Path("userName") userName : String?,
+        @Query("per_page") perpage : Int,
+        @Query("page") page : Int
+        ): List<UserFollower>?
 
      //setInterfacce-Following
     @GET("/users/{userName}/following")
-    suspend fun getListFollowing(@Path("userName") userName : String?): FollowingModel?
+    suspend fun getListFollowing(
+         @Path("userName") userName : String?,
+         @Query("per_page") perpage : Int,
+         @Query("page") page : Int
+     ): List<UserFollowing>?
 }

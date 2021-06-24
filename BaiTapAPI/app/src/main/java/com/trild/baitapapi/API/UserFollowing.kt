@@ -1,6 +1,6 @@
 package com.trild.baitapapi.API
 
-data class FollowingModelItem(
+data class UserFollowing(
     val avatar_url: String?, // https://avatars.githubusercontent.com/u/5754972?v=4
     val events_url: String?, // https://api.github.com/users/florent37/events{/privacy}
     val followers_url: String?, // https://api.github.com/users/florent37/followers

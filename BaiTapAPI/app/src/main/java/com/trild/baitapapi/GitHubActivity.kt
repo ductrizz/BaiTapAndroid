@@ -1,15 +1,7 @@
 package com.trild.baitapapi
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import com.orhanobut.logger.Logger
-import com.trild.baitapapi.API.FollowerModel
-import com.trild.baitapapi.API.UserModel
-import com.trild.baitapapi.SetData.GithubDataRepository
-import kotlinx.coroutines.*
 
 class GitHubActivity : AppCompatActivity() {
 
@@ -27,12 +19,14 @@ class GitHubActivity : AppCompatActivity() {
         }*/
 
         /*//Follower
-                    val githubDataRepository = GithubDataRepository()
-            CoroutineScope(Dispatchers.IO).launch {
-                val listUserFollower = githubDataRepository.getListFollowerfroAPI("ToanMobile")
-                withContext(Dispatchers.Main){
-                    Logger.e("USER MODEL :", "xxx")
-                    findViewById<RecyclerView>(R.id.recycleViewMain).adapter = AdapterFollower(this@GitHubActivity, listUserFollower?: FollowerModel())
+                        val githubDataRepository = GithubDataRepository()
+        CoroutineScope(Dispatchers.IO).launch {
+            val listUserFollower = githubDataRepository.getListFollowerfroAPI("ToanMobile")
+            withContext(Dispatchers.Main) {
+                findViewById<RecyclerView>(R.id.recycleFollower).adapter =
+                    AdapterFollower(this@TestActivity, listUserFollower ?: FollowerModel())
+            }
+        }
                 }
             }*/
 

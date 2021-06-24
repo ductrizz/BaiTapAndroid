@@ -4,20 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.FragmentFollower">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleFollower"
-        android:layout_width="match_parent"
-        android:layout_weight="5"
-        android:layout_marginTop="@dimen/dim_40dp"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
-        tools:listitem="@layout/test_follower"
-        tools:itemCount="5"
-        android:padding="@dimen/dim_10dp"
-        />
+    tools:context=".Fragment.FragmentFollower"
+    >
 
     <Button
         android:id="@+id/btnBackUser"
@@ -26,6 +14,31 @@
         android:text="USER"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:id="@+id/txtFollower"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_40dp"
+        android:text="@string/Follower"
+        android:textStyle="bold"
+        android:textSize="@dimen/dim_25sp"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:background="@color/yellow_light"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleFollower"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dim_40dp"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/recycle_follower"
+        tools:itemCount="9"
+        app:spanCount="5"
+        android:paddingVertical="@dimen/dim_5dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
