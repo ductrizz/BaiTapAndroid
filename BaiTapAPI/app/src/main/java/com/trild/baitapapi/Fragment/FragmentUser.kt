@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.orhanobut.logger.Logger
 import com.trild.baitapapi.R
 import com.trild.baitapapi.SetData.GithubDataRepository
@@ -38,10 +39,13 @@ class FragmentUser : Fragment() {
 
         val githubDataRepository = GithubDataRepository()
         CoroutineScope(Dispatchers.IO).launch {
-            val userModel = GithubDataRepository().getUserDetailfroAPI("ductrizz")
+            val userModel = GithubDataRepository().getUserDetailfroAPI("ToanMobile")
             Logger.e("userModel==:", userModel.toString())
             withContext(Dispatchers.Main) {
                 view.findViewById<TextView>(R.id.txtUserName)?.text = userModel?.name ?: ""
+                Glide.with(this@FragmentUser).load(userModel?.avatar_url).into(
+                    view.findViewById(R.id.imgUser)
+                )
             }
         }
     }

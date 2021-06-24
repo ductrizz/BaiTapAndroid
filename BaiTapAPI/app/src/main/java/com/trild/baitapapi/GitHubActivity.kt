@@ -15,16 +15,16 @@ class GitHubActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_user)
+        setContentView(R.layout.activity_github)
 
-        val githubDataRepository = GithubDataRepository()
+/*        val githubDataRepository = GithubDataRepository()
         CoroutineScope(Dispatchers.IO).launch {
             val userModel = githubDataRepository.getUserDetailfroAPI( "ToanMobile")
             Logger.e("USER MODEL :",userModel.toString())
             withContext(Dispatchers.Main){
                 findViewById<TextView>(R.id.txtUserName).text = userModel?.name ?: ""
             }
-        }
+        }*/
 
         /*//Follower
                     val githubDataRepository = GithubDataRepository()
