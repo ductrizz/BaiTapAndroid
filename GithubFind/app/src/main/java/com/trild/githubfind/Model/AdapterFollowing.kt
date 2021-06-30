@@ -8,14 +8,18 @@ import com.bumptech.glide.Glide
 import com.trild.githubfind.databinding.UserItemBinding
 
 
-class AdapterFollowing (private val context: Context): RecyclerView.Adapter<AdapterFollowing.ViewHolder>() {
+class AdapterFollowing (private val context: Context, private val clickItem: (String?)->Unit): RecyclerView.Adapter<AdapterFollowing.ViewHolder>() {
     private var list: MutableList<FollowingModel> = mutableListOf()
 
     class ViewHolder(private val itemRowBiding: UserItemBinding) : RecyclerView.ViewHolder(itemRowBiding.root) {
-        fun bindData(context: Context, userFollower: FollowingModel){
+
+        fun bindData(context: Context, clickItem: (String?) -> Unit, userFollower: FollowingModel){
             Glide.with(context).load(userFollower.avatar_url).into(itemRowBiding.imgUsersAvata)
             itemRowBiding.txtUserFollow.text = userFollower.login
             itemRowBiding.txtIDFollow.text = userFollower.id.toString()
+            itemRowBiding.itemUser.setOnClickListener {
+                clickItem(userFollower.login)
+            }
         }
 
     }
@@ -27,7 +31,7 @@ class AdapterFollowing (private val context: Context): RecyclerView.Adapter<Adap
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = list.get(position)
-        holder.bindData(context, item)
+        holder.bindData(context,clickItem, item)
     }
 
     override fun getItemCount(): Int = list.size

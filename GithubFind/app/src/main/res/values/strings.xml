@@ -17,4 +17,5 @@
     <string name="Login">Login Name</string>
     <string name="ID_user">ID User</string>
     <string name="title_activity_github">GithubActivity</string>
+    <string name="second_fragment_label">Second Fragment</string>
 </resources>

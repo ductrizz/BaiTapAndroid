@@ -19,6 +19,7 @@ class GithubFragment : Fragment() {
     private lateinit var viewModel : ViewModel
     private var _binding: GithubContentBinding? = null
     private val binding get() = _binding!!
+    private var userName = "ToanMobile"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +34,8 @@ class GithubFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
-        viewModel.getModelDetailAPI("ToanMobile"){UserDetail ->
+        getData()
+/*        viewModel.getModelDetailAPI(userName){UserDetail ->
             UserDetail?.apply {
                 Log.e("UserModelFragment:==",""+UserDetail.toString())
                 Glide.with(this@GithubFragment).load(UserDetail.avatar_url).into(binding.imgAvata)
@@ -47,27 +49,70 @@ class GithubFragment : Fragment() {
         }
 
 
-        viewModel.getFollowerDetailAPI("ToanMobile"){listFollower ->
+        viewModel.getFollowerDetailAPI(userName){listFollower ->
             listFollower?.apply{
                 Log.e("ListFollowerFragment:", listFollower.toString())
-                val adapterFollower = AdapterFollower(requireContext())
+                val adapterFollower = AdapterFollower(requireContext()){newName ->
+                    userName = newName ?: ""
+                }
                 adapterFollower.addAll(this)
                 binding.recycleFollower.adapter = adapterFollower
             }
 
         }
 
-        viewModel.getFollowingDetailAPI("ToanMobile"){listFollowing ->
+        viewModel.getFollowingDetailAPI(userName){listFollowing ->
             listFollowing?.apply {
                 Log.e("ListFollowingFragment:", listFollowing.toString())
-                val adapterFollowing = AdapterFollowing(requireContext())
+                val adapterFollowing = AdapterFollowing(requireContext()){newName ->
+                    userName = newName ?: ""
+                }
+                adapterFollowing.addAll(this)
+                binding.recycleFollowing.adapter = adapterFollowing
+            }
+        }*/
+    }
+    fun getData(){
+        viewModel.getModelDetailAPI(userName){UserDetail ->
+            UserDetail?.apply {
+                Log.e("UserModelFragment:==",""+UserDetail.toString())
+                Glide.with(this@GithubFragment).load(UserDetail.avatar_url).into(binding.imgAvata)
+                binding.txtUserName.text = name
+                binding.txtLogin.text = "( "+login+" )"
+                binding.txtBIO.text = "BIO: " + bio
+                binding.txtCountFollower.text = "$followers Followers"
+                binding.txtCountFollowing.text = "$following Following"
+                binding.txtCountRepos.text = "$public_repos Repos"
+            }
+        }
+
+
+        viewModel.getFollowerDetailAPI(userName){listFollower ->
+            listFollower?.apply{
+                Log.e("ListFollowerFragment:", listFollower.toString())
+                val adapterFollower = AdapterFollower(requireContext()){newName ->
+                    userName = newName ?: ""
+                    getData()
+                }
+                adapterFollower.addAll(this)
+                binding.recycleFollower.adapter = adapterFollower
+            }
+
+        }
+
+        viewModel.getFollowingDetailAPI(userName){listFollowing ->
+            listFollowing?.apply {
+                Log.e("ListFollowingFragment:", listFollowing.toString())
+                val adapterFollowing = AdapterFollowing(requireContext()){newName ->
+                    userName = newName ?: ""
+                    getData()
+                }
                 adapterFollowing.addAll(this)
                 binding.recycleFollowing.adapter = adapterFollowing
             }
 
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

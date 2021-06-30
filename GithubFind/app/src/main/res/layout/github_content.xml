@@ -166,7 +166,9 @@
             android:id="@+id/recycleFollower"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:padding="@dimen/dim_5dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="10"
             tools:listitem="@layout/user_item" />
 
@@ -195,6 +197,8 @@
             android:id="@+id/recycleFollowing"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:padding="@dimen/dim_5dp"
             tools:itemCount="10"
             tools:listitem="@layout/user_item" />
