@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_60dp"
+        android:background="@color/cyan"
+        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/etxtSearch"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dim_40dp"
+        android:layout_margin="@dimen/dim_10dp"
+        android:background="@drawable/fillet"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dim_15dp"
+        android:hint="@string/Etxt_Search"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="@dimen/dim_50dp"
+        android:layout_height="@dimen/dim_40dp"
+        android:paddingStart="@dimen/dim_10dp"
+        android:paddingEnd="@dimen/dim_20dp"
+        android:text="@string/Search"
+        android:background="@drawable/search_icon"
+        app:layout_constraintEnd_toEndOf="@id/etxtSearch"
+        app:layout_constraintTop_toTopOf="@id/etxtSearch"
+        app:layout_constraintBottom_toBottomOf="@id/etxtSearch" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgAvata"
+        android:layout_width="@dimen/dim_130dp"
+        android:layout_height="@dimen/dim_130dp"
+        android:layout_margin="@dimen/dim_5dp"
+        android:padding="1dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etxtSearch"
+        app:layout_constraintVertical_bias="0.484"
+        app:shapeAppearanceOverlay="@style/circle"
+        app:srcCompat="@mipmap/ic_launcher"
+        app:strokeColor="@color/blue_dark"
+        app:strokeWidth="2dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_30dp"
+        android:gravity="center_vertical"
+        android:text="@string/UserName"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_30dp"
+        android:gravity="center_vertical"
+        android:text="@string/Login"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_15sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/txtBIO"
+        android:layout_width="@dimen/dim_240dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="BIO"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_15sp"
+        android:textStyle="italic|bold" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dim_10dp"
+        android:orientation="vertical"
+        app:constraint_referenced_ids="txtUserName,txtLogin,txtBIO"
+        app:flow_horizontalAlign="start"
+        app:layout_constraintBottom_toBottomOf="@id/imgAvata"
+        app:layout_constraintStart_toEndOf="@id/imgAvata"
+        app:layout_constraintTop_toTopOf="@id/imgAvata" />
+
+    <TextView
+        android:id="@+id/txtCountFollower"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_30dp"
+        android:gravity="center"
+        android:text="Follower"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/dim_15sp"
+        android:textStyle="italic|bold"
+         />
+
+    <TextView
+        android:id="@+id/txtCountFollowing"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_30dp"
+        android:gravity="center"
+        android:text="Following"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/dim_15sp"
+        android:textStyle="italic|bold"
+         />
+
+    <TextView
+        android:id="@+id/txtCountRepos"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_30dp"
+        android:gravity="center"
+        android:text="Repos"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/dim_15sp"
+        android:textStyle="italic|bold"
+         />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flowCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:flow_horizontalGap="@dimen/dim_5dp"
+        android:layout_marginTop="@dimen/dim_15dp"
+        app:constraint_referenced_ids="txtCountFollower,txtCountFollowing,txtCountRepos"
+        app:flow_horizontalAlign="center"
+        app:layout_constraintTop_toBottomOf="@id/flowProfile"
+        app:layout_constraintStart_toStartOf="@id/flowProfile" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.60"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.5">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_30dp"
+            android:background="@drawable/header_border"
+            android:gravity="center"
+            android:text="Follower"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleFollower"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dim_5dp"
+            tools:itemCount="10"
+            tools:listitem="@layout/user_item" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintWidth_percent="0.5">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_30dp"
+            android:background="@drawable/header_border"
+            android:gravity="center"
+            android:text="Following"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleFollowing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dim_5dp"
+            tools:itemCount="10"
+            tools:listitem="@layout/user_item" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

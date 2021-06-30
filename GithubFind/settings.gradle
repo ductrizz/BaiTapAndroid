@@ -1,0 +1,2 @@
+rootProject.name = "GithubFind"
+include ':app'

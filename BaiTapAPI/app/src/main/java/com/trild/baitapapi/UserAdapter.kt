@@ -8,8 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.trild.baitapapi.API.UserFollower
 
-class UserAdapter (private val context: Context, private val list: FollowingModel) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter (private val context: Context, private val list: List<UserFollower>) : RecyclerView.Adapter<UserAdapter.ViewHolder>(){
     override fun getItemCount(): Int = list.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
