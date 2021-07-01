@@ -52,7 +52,7 @@ class ViewModel : ViewModel() {
 
     fun getModelDetailAPI(UserName: String, returnUser: (UserModel?) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
-            val userDB = githubService.getUserDetail(userName = UserName)
+            val userDB = githubDao.getUserModel(userName = UserName)
             val user = if (userDB != null) {
                 userDB
             } else {
@@ -71,7 +71,7 @@ class ViewModel : ViewModel() {
     fun getFollowerDetailAPI(UserName: String, returnUser: (List<FollowerModel>?) -> Unit) {
 
         viewModelScope.launch(Dispatchers.IO) {
-            val listFollowerDB = githubService.getListFollower(userName = UserName)
+            val listFollowerDB = githubDao.getListUserFollower(userName = UserName)
             var listFollower = if (listFollowerDB?.size ?: 0 <= 0) {
                 listFollowerDB
             } else {
@@ -88,7 +88,7 @@ class ViewModel : ViewModel() {
 
     fun getFollowingDetailAPI(UserName: String, returnUser: (List<FollowingModel>?) -> Unit) {
         viewModelScope.launch(Dispatchers.IO) {
-            val listFollowingDB = githubService.getListFollowing(userName = UserName)
+            val listFollowingDB = githubDao.getListUserFollowing(userName = UserName)
             var listFollowing = if (listFollowingDB?.size ?: 0 <= 0) {
                 listFollowingDB
             } else {

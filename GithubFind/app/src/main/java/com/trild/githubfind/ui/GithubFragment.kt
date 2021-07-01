@@ -27,6 +27,7 @@ class GithubFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = GithubContentBinding.inflate(inflater,container,false)
+        viewModel.initDatabase(requireContext())
         return binding.root
     }
 
