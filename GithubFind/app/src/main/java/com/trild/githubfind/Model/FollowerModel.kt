@@ -1,6 +1,12 @@
 package com.trild.githubfind.Model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity(tableName = "FollowerDetail")
 data class FollowerModel(
+    @PrimaryKey
     val avatar_url: String?, // https://avatars.githubusercontent.com/u/61400883?v=4
     val events_url: String?, // https://api.github.com/users/ChloeTruong210/events{/privacy}
     val followers_url: String?, // https://api.github.com/users/ChloeTruong210/followers

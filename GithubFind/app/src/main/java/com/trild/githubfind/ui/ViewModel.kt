@@ -1,12 +1,15 @@
 package com.trild.githubfind.ui
 
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.orhanobut.logger.Logger
+import com.trild.githubfind.API.GithubDao
 import com.trild.githubfind.Model.FollowerModel
 import com.trild.githubfind.Model.FollowingModel
 import com.trild.githubfind.Model.UserModel
+import com.trild.githubfind.data.UserDatabase
 import com.trild.githubuser.API.GithubService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,7 +22,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ViewModel : ViewModel() {
-    var githubService : GithubService
+    lateinit var githubService: GithubService
+
+    //RoomInitVar
+    lateinit var githubDao: GithubDao
+
     init {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com")
@@ -29,44 +36,72 @@ class ViewModel : ViewModel() {
         githubService = retrofit.create(GithubService::class.java)
     }
 
+    //Function Init Database
+    fun initDatabase(context: Context) {
+        githubDao = UserDatabase(context).githubDao()
+    }
+
     private fun getOkHttp(): OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
-        interceptor.level =  HttpLoggingInterceptor.Level.BODY
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
         val builder = OkHttpClient.Builder()
         builder.addInterceptor(interceptor)
         val OkHttpClient = builder.build()
         return OkHttpClient
     }
 
-    fun getModelDetailAPI(UserName: String, returnUser : (UserModel?) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO){
-            val userModel = githubService.getUserDetail(userName = UserName)
-            Logger.e("getUserDetail="+userModel)
-            withContext(Dispatchers.Main){
-                returnUser(userModel)
+    fun getModelDetailAPI(UserName: String, returnUser: (UserModel?) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val userDB = githubService.getUserDetail(userName = UserName)
+            val user = if (userDB != null) {
+                userDB
+            } else {
+                val userAPI = githubService.getUserDetail(userName = UserName)
+                githubDao.insertUserModel(userAPI)
+                userAPI
+            }
+            Logger.e("getUserDetail=" + user)
+            withContext(Dispatchers.Main) {
+                returnUser(user)
             }
         }
     }
 
 
-    fun getFollowerDetailAPI(UserName: String, returnUser : (List<FollowerModel>?) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO){
-            val listFollower = githubService.getListFollower(userName = UserName)
-            Logger.e("getFollower="+listFollower)
-            withContext(Dispatchers.Main){
+    fun getFollowerDetailAPI(UserName: String, returnUser: (List<FollowerModel>?) -> Unit) {
+
+        viewModelScope.launch(Dispatchers.IO) {
+            val listFollowerDB = githubService.getListFollower(userName = UserName)
+            var listFollower = if (listFollowerDB?.size ?: 0 <= 0) {
+                listFollowerDB
+            } else {
+                val listFollowerAPI = githubService.getListFollower(userName = UserName)
+                githubDao.insertListUserFollower(listFollowerAPI)
+                listFollowerAPI
+            }
+            Logger.e("getFollower=" + listFollower)
+            withContext(Dispatchers.Main) {
                 returnUser(listFollower)
             }
         }
     }
 
-    fun getFollowingDetailAPI(UserName: String, returnUser : (List<FollowingModel>?) -> Unit) {
-        viewModelScope.launch(Dispatchers.IO){
-            val listFollowing = githubService.getListFollowing(userName = UserName)
-            Logger.e("getFollwing="+listFollowing)
-            withContext(Dispatchers.Main){
-                returnUser(listFollowing)
+    fun getFollowingDetailAPI(UserName: String, returnUser: (List<FollowingModel>?) -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val listFollowingDB = githubService.getListFollowing(userName = UserName)
+            var listFollowing = if (listFollowingDB?.size ?: 0 <= 0) {
+                listFollowingDB
+            } else {
+                val listFollowingAPI = githubService.getListFollowing(userName = UserName)
+                githubDao.insertListUserFollowing(listFollowingAPI)
+                listFollowingAPI
             }
+            Logger.e("getFollower=" + listFollowing)
+            withContext(Dispatchers.Main) {
+                returnUser(listFollowing)
+
+            }
+
         }
     }
-
 }

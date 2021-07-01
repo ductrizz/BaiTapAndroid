@@ -27,51 +27,22 @@ class GithubFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = GithubContentBinding.inflate(inflater,container,false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
+        viewModel.initDatabase(requireContext())
         getData()
-/*        viewModel.getModelDetailAPI(userName){UserDetail ->
-            UserDetail?.apply {
-                Log.e("UserModelFragment:==",""+UserDetail.toString())
-                Glide.with(this@GithubFragment).load(UserDetail.avatar_url).into(binding.imgAvata)
-                binding.txtUserName.text = name
-                binding.txtLogin.text = "( "+login+" )"
-                binding.txtBIO.text = "BIO: " + bio
-                binding.txtCountFollower.text = "$followers Followers"
-                binding.txtCountFollowing.text = "$following Following"
-                binding.txtCountRepos.text = "$public_repos Repos"
+        binding.btnSearch.setOnClickListener {
+            if (binding.etxtSearch.text?.length?:0 > 0){
+                userName = binding.etxtSearch.text.toString()
+                getData()
             }
         }
-
-
-        viewModel.getFollowerDetailAPI(userName){listFollower ->
-            listFollower?.apply{
-                Log.e("ListFollowerFragment:", listFollower.toString())
-                val adapterFollower = AdapterFollower(requireContext()){newName ->
-                    userName = newName ?: ""
-                }
-                adapterFollower.addAll(this)
-                binding.recycleFollower.adapter = adapterFollower
-            }
-
-        }
-
-        viewModel.getFollowingDetailAPI(userName){listFollowing ->
-            listFollowing?.apply {
-                Log.e("ListFollowingFragment:", listFollowing.toString())
-                val adapterFollowing = AdapterFollowing(requireContext()){newName ->
-                    userName = newName ?: ""
-                }
-                adapterFollowing.addAll(this)
-                binding.recycleFollowing.adapter = adapterFollowing
-            }
-        }*/
     }
+
     fun getData(){
         viewModel.getModelDetailAPI(userName){UserDetail ->
             UserDetail?.apply {
