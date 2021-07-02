@@ -18,7 +18,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import java.lang.Exception
 
 
 class ViewModel : ViewModel() {
@@ -28,12 +28,16 @@ class ViewModel : ViewModel() {
     lateinit var githubDao: GithubDao
 
     init {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.github.com")
-            .client(getOkHttp())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        githubService = retrofit.create(GithubService::class.java)
+        try {
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://api.github.com")
+                .client(getOkHttp())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            githubService = retrofit.create(GithubService::class.java)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     //Function Init Database
@@ -56,9 +60,16 @@ class ViewModel : ViewModel() {
             val user = if (userDB != null) {
                 userDB
             } else {
+                try{
                 val userAPI = githubService.getUserDetail(userName = UserName)
-                githubDao.insertUserModel(userAPI)
+                if(userAPI != null) {
+                    githubDao.insertUserModel(userAPI)
+                }
                 userAPI
+            }catch (e: Exception){
+                e.printStackTrace()
+                    null
+                }
             }
             Logger.e("getUserDetail=" + user)
             withContext(Dispatchers.Main) {
@@ -75,9 +86,16 @@ class ViewModel : ViewModel() {
             var listFollower = if (listFollowerDB?.size ?: 0 > 0) {
                 listFollowerDB
             } else {
-                val listFollowerAPI = githubService.getListFollower(userName = UserName)
-                githubDao.insertListUserFollower(listFollowerAPI)
-                listFollowerAPI
+                try {
+                    val listFollowerAPI = githubService.getListFollower(userName = UserName)
+                    if(listFollowerAPI != null) {
+                        githubDao.insertListUserFollower(listFollowerAPI)
+                    }
+                    listFollowerAPI
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    null
+                }
             }
             Logger.e("getFollower=" + listFollower)
             withContext(Dispatchers.Main) {
@@ -92,16 +110,23 @@ class ViewModel : ViewModel() {
             var listFollowing = if (listFollowingDB?.size ?: 0 > 0) {
                 listFollowingDB
             } else {
-                val listFollowingAPI = githubService.getListFollowing(userName = UserName)
-                githubDao.insertListUserFollowing(listFollowingAPI)
-                listFollowingAPI
+                try {
+                    val listFollowingAPI = githubService.getListFollowing(userName = UserName)
+                    if(listFollowingAPI != null) {
+                        githubDao.insertListUserFollowing(listFollowingAPI)
+                    }
+                    listFollowingAPI
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    null
+                }
             }
             Logger.e("getFollower=" + listFollowing)
             withContext(Dispatchers.Main) {
                 returnUser(listFollowing)
 
             }
-
         }
     }
+
 }

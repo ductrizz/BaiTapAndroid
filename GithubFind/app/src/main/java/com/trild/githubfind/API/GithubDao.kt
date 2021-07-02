@@ -12,14 +12,14 @@ import com.trild.githubfind.Model.UserModel
 @Dao
 interface GithubDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertUserModel(user : UserModel?)
+    @Insert
+    suspend fun insertUserModel(user : UserModel)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertListUserFollower(list : List<FollowerModel>?)
+    @Insert
+    suspend fun insertListUserFollower(list : List<FollowerModel>)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertListUserFollowing(list : List<FollowingModel>?)
+    @Insert
+    suspend fun insertListUserFollowing(list : List<FollowingModel>)
 
     @Query("SELECT * FROM UserModel WHERE login = :userName")
     suspend fun getUserModel(userName: String) : UserModel?
@@ -29,4 +29,11 @@ interface GithubDao {
 
     @Query("SELECT * FROM FollowingDetail WHERE login = :userName")
     suspend fun getListUserFollowing(userName: String) : List<FollowingModel>?
+
+/*  //ERROR NotNull() ???
+    @Query("SELECT * FROM FollowerDetail")
+    suspend fun getListUserFollower(userName: String) : List<FollowerModel>?
+
+    @Query("SELECT * FROM FollowingDetail")
+    suspend fun getListUserFollowing(userName: String) : List<FollowingModel>?*/
 }

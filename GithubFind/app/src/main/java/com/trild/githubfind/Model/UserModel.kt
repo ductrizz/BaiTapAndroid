@@ -6,13 +6,14 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "UserModel")
 data class UserModel(
-    @PrimaryKey val id: Int?, // 6941388
+    @PrimaryKey
+    val id: Int?, // 6941388
     val avatar_url: String?, // https://avatars.githubusercontent.com/u/6941388?v=4
     val bio: String?, // - Senior Android (Kotlin and Java). - Cross platform: Flutter (Dart) and React Native (Javascript).
     val blog: String?,
     val company: String?, // Netacom
     val created_at: String?, // 2014-03-13T13:32:45Z
-    val email: Any?, // null
+    val email: String?, // null
     val events_url: String?, // https://api.github.com/users/ToanMobile/events{/privacy}
     val followers: Int?, // 39
     val followers_url: String?, // https://api.github.com/users/ToanMobile/followers
@@ -20,7 +21,7 @@ data class UserModel(
     val following_url: String?, // https://api.github.com/users/ToanMobile/following{/other_user}
     val gists_url: String?, // https://api.github.com/users/ToanMobile/gists{/gist_id}
     val gravatar_id: String?,
-    val hireable: Any?, // null
+    val hireable: String?, // null
     val html_url: String?, // https://github.com/ToanMobile
     val location: String?, // HCM, Viet Nam.
     val login: String?, // ToanMobile
@@ -34,7 +35,7 @@ data class UserModel(
     val site_admin: Boolean?, // false
     val starred_url: String?, // https://api.github.com/users/ToanMobile/starred{/owner}{/repo}
     val subscriptions_url: String?, // https://api.github.com/users/ToanMobile/subscriptions
-    val twitter_username: Any?, // null
+    val twitter_username: String?, // null
     val type: String?, // User
     val updated_at: String?, // 2021-06-30T10:03:21Z
     val url: String? // https://api.github.com/users/ToanMobile

@@ -36,8 +36,8 @@ class AdapterFollowing (private val context: Context, private val clickItem: (St
 
     override fun getItemCount(): Int = list.size
 
-    fun addAll(newList: List<FollowingModel>){
-        list.addAll(newList)
+    fun addAll(newList: List<FollowingModel>?){
+        list.addAll(newList?: listOf())
         notifyDataSetChanged()
     }
 }

@@ -27,7 +27,6 @@ class GithubFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = GithubContentBinding.inflate(inflater,container,false)
-        viewModel.initDatabase(requireContext())
         return binding.root
     }
 
@@ -55,34 +54,37 @@ class GithubFragment : Fragment() {
                 binding.txtCountFollower.text = "$followers Followers"
                 binding.txtCountFollowing.text = "$following Following"
                 binding.txtCountRepos.text = "$public_repos Repos"
+            }?:run{
+                Log.e("UserModelFragment:==",""+UserDetail.toString())
+                Glide.with(this@GithubFragment).load("").into(binding.imgAvata)
+                binding.txtUserName.text = ""
+                binding.txtLogin.text = ""
+                binding.txtBIO.text = ""
+                binding.txtCountFollower.text = ""
+                binding.txtCountFollowing.text = ""
+                binding.txtCountRepos.text = ""
             }
         }
 
 
         viewModel.getFollowerDetailAPI(userName){listFollower ->
-            listFollower?.apply{
-                Log.e("ListFollowerFragment:", listFollower.toString())
-                val adapterFollower = AdapterFollower(requireContext()){newName ->
-                    userName = newName ?: ""
-                    getData()
-                }
-                adapterFollower.addAll(this)
-                binding.recycleFollower.adapter = adapterFollower
+            Log.e("ListFollowerFragment:", listFollower.toString())
+            val adapterFollower = AdapterFollower(requireContext()){newName ->
+                userName = newName ?: ""
+                getData()
             }
-
+            adapterFollower.addAll(listFollower)
+            binding.recycleFollower.adapter = adapterFollower
         }
 
         viewModel.getFollowingDetailAPI(userName){listFollowing ->
-            listFollowing?.apply {
-                Log.e("ListFollowingFragment:", listFollowing.toString())
-                val adapterFollowing = AdapterFollowing(requireContext()){newName ->
-                    userName = newName ?: ""
-                    getData()
-                }
-                adapterFollowing.addAll(this)
-                binding.recycleFollowing.adapter = adapterFollowing
+            Log.e("ListFollowingFragment:", listFollowing.toString())
+            val adapterFollowing = AdapterFollowing(requireContext()){newName ->
+                userName = newName ?: ""
+                getData()
             }
-
+            adapterFollowing.addAll(listFollowing)
+            binding.recycleFollowing.adapter = adapterFollowing
         }
     }
     override fun onDestroyView() {
